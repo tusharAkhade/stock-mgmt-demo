@@ -70,20 +70,17 @@ public class StockAccount {
 
                 if (availableStocks >= numOfStocksBuying) {
                     Long temp = accountList.get(accountHolderName).get(stockName);
-                    System.out.println("acc detail: " + temp);
                     if (temp == null) {
                         accountList.get(accountHolderName).put(stockName, 0L);
                         temp = 0L;
+//                        temp = accountList.get(accountHolderName).get(stockName);
                     }
                     availableStocks = availableStocks - numOfStocksBuying;
                     stockList.get(stockName).setNumOfShares(availableStocks);
 
                     temp = temp + numOfStocksBuying;
                     accountList.get(accountHolderName).put(stockName, temp);
-
-                    System.out.println(accountList.get(accountHolderName).get(stockName) + " : ");
-                    System.out.println("You have " + temp + " stocks now.");
-
+                    System.out.println("You purchased " + temp + " stocks.");
                     return accountList;
                 } else {
                     System.out.println("You have " + availableStocks + " stocks only.");
@@ -119,7 +116,7 @@ public class StockAccount {
                     long temp = stockList.get(stockName).getNumOfShares();
                     temp = temp + sellStocks;
                     stockList.get(stockName).setNumOfShares(temp);
-                    System.out.println("You have " + temp + " stocks now.");
+                    System.out.println("You sold " + sellStocks + " stocks.");
                 } else {
                     System.out.println("Only " + availableStocks + " stocks available in the account.");
                 }
